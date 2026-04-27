@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="MoodMarket is a local-first emotional consumption mirror for purchase decisions."
+    >
+    <title>MoodMarket</title>
+    <link rel="preload" href="assets/moodmarket-reflection.png" as="image">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="ambient-grid" aria-hidden="true"></div>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#mirror" data-route-link="mirror" aria-label="MoodMarket mirror">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>MoodMarket</span>
+        </a>
+
+        <nav class="topnav" aria-label="Workspace">
+          <a href="#mirror" data-route-link="mirror">Mirror</a>
+          <a href="#library" data-route-link="library">Library</a>
+          <a href="#patterns" data-route-link="patterns">Patterns</a>
+          <a href="#protocols" data-route-link="protocols">Protocols</a>
+        </nav>
+
+        <div class="session-chip">
+          <span aria-hidden="true"></span>
+          Local private
+        </div>
+      </header>
+
+      <main>
+        <section id="view-mirror" class="route-view" data-route="mirror">
+          <div class="route-heading mirror-heading">
+            <div>
+              <p class="eyebrow">Consumption Mirror</p>
+              <h1>MoodMarket</h1>
+            </div>
+            <div class="live-summary" aria-label="Current mirror summary">
+              <span id="summary-risk">Risk 0</span>
+              <span id="summary-action">Listening</span>
+              <span id="summary-budget">Budget neutral</span>
+            </div>
+          </div>
+
+          <div class="mirror-grid">
+            <section class="workbench" aria-labelledby="dossier-title">
+              <div class="surface-header">
+                <div>
+                  <p class="eyebrow">Object Dossier</p>
+                  <h2 id="dossier-title">What wants to be bought?</h2>
+                </div>
+                <button class="icon-button" type="button" id="new-button" aria-label="New dossier">
+                  <span class="glyph glyph-plus" aria-hidden="true"></span>
+                </button>
+              </div>
+
+              <form id="mirror-form" class="mirror-form" autocomplete="off">
+                <div class="field-grid">
+                  <label class="field span-2" for="item-name">
+                    <span>Object</span>
+                    <input id="item-name" name="itemName" type="text" value="Limited-edition running shoes">
+                  </label>
+                  <label class="field" for="item-price">
+                    <span>Price</span>
+                    <input id="item-price" name="price" type="number" min="0" step="1" value="185">
+                  </label>
+                  <label class="field" for="item-category">
+                    <span>Category</span>
+                    <select id="item-category" name="category">
+                      <option value="clothing" selected>Clothing</option>
+                      <option value="tech">Tech</option>
+                      <option value="home">Home</option>
+                      <option value="beauty">Beauty</option>
+                      <option value="travel">Travel</option>
+                      <option value="wellness">Wellness</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </label>
+                  <label class="field" for="item-url">
+                    <span>Link</span>
+                    <input id="item-url" name="url" type="url" placeholder="https://">
+                  </label>
+                  <label class="field" for="item-channel">
+                    <span>Discovery</span>
+                    <select id="item-channel" name="channel">
+                      <option value="social_feed" selected>Social feed</option>
+                      <option value="marketplace_search">Search</option>
+                      <option value="sale_page">Sale page</option>
+                      <option value="influencer_email">Influencer/email</option>
+                      <option value="friend_recommendation">Friend</option>
+                      <option value="physical_store">Store</option>
+                    </select>
+                  </label>
+                  <label class="field" for="purchase-window">
+                    <span>Decision window</span>
+                    <select id="purchase-window" name="window">
+                      <option value="now" selected>Now</option>
+                      <option value="today">Today</option>
+                      <option value="week">This week</option>
+                      <option value="later">Later</option>
+                    </select>
+                  </label>
+                </div>
+
+                <fieldset class="chip-field">
+                  <legend>Active pressure</legend>
+                  <div class="chip-grid">
+                    <label><input type="checkbox" name="context" value="scrolling" checked><span>Scrolling</span></label>
+                    <label><input type="checkbox" name="context" value="stress"><span>Stress</span></label>
+                    <label><input type="checkbox" name="context" value="boredom" checked><span>Boredom</span></label>
+                    <label><input type="checkbox" name="context" value="reward" checked><span>Reward</span></label>
+                    <label><input type="checkbox" name="context" value="comparison" checked><span>Comparison</span></label>
+                    <label><input type="checkbox" name="context" value="identity"><span>Identity</span></label>
+                    <label><input type="checkbox" name="context" value="scarcity" checked><span>Scarcity</span></label>
+                    <label><input type="checkbox" name="context" value="replacement"><span>Replacement</span></label>
+                  </div>
+                </fieldset>
+
+                <div class="slider-matrix" aria-label="Signal calibration">
+                  <label class="slider-row">
+                    <span>Stress</span>
+                    <input type="range" name="stress" min="0" max="100" value="38">
+                    <output>38</output>
+                  </label>
+                  <label class="slider-row">
+                    <span>Boredom</span>
+                    <input type="range" name="boredom" min="0" max="100" value="72">
+                    <output>72</output>
+                  </label>
+                  <label class="slider-row">
+                    <span>Envy</span>
+                    <input type="range" name="envy" min="0" max="100" value="64">
+                    <output>64</output>
+                  </label>
+                  <label class="slider-row">
+                    <span>Excitement</span>
+                    <input type="range" name="excitement" min="0" max="100" value="81">
+                    <output>81</output>
+                  </label>
+                  <label class="slider-row">
+                    <span>Certainty</span>
+                    <input type="range" name="certainty" min="0" max="100" value="44">
+                    <output>44</output>
+                  </label>
+                  <label class="slider-row">
+                    <span>Budget fit</span>
+                    <input type="range" name="budgetFit" min="0" max="100" value="36">
+                    <output>36</output>
+                  </label>
+                </div>
+
+                <div class="reflection-grid">
+                  <label class="field span-2" for="problem">
+                    <span>Problem it solves</span>
+                    <textarea id="problem" name="problem" rows="3">Motivation and a sense of freshness at the gym.</textarea>
+                  </label>
+                  <label class="field" for="tomorrow">
+                    <span>Tomorrow effect</span>
+                    <textarea id="tomorrow" name="tomorrow" rows="3">I would feel more put together, but I do not need them for training this week.</textarea>
+                  </label>
+                  <label class="field" for="visibility">
+                    <span>If nobody noticed</span>
+                    <textarea id="visibility" name="visibility" rows="3">I might want them less if nobody saw them.</textarea>
+                  </label>
+                  <label class="field span-2" for="alternative">
+                    <span>Clean alternative</span>
+                    <textarea id="alternative" name="alternative" rows="3">Use the shoes I already have, plan three runs, and revisit after that.</textarea>
+                  </label>
+                </div>
+
+                <div class="action-row">
+                  <button class="primary-action" type="submit">
+                    <span class="glyph glyph-scan" aria-hidden="true"></span>
+                    Run mirror
+                  </button>
+                  <button class="secondary-action" type="button" id="save-button">
+                    <span class="glyph glyph-save" aria-hidden="true"></span>
+                    Save
+                  </button>
+                  <button class="ghost-action" type="button" id="cooldown-button">
+                    <span class="glyph glyph-clock" aria-hidden="true"></span>
+                    Cooldown
+                  </button>
+                  <button class="ghost-action" type="button" id="pass-button">
+                    <span class="glyph glyph-pass" aria-hidden="true"></span>
+                    Pass
+                  </button>
+                </div>
+              </form>
+            </section>
+
+            <aside class="readout-panel" aria-labelledby="readout-title">
+              <div class="readout-visual">
+                <img src="assets/moodmarket-reflection.png" alt="Reflective purchase signal still life">
+                <div class="readout-code" id="result-code">MM-000</div>
+              </div>
+
+              <div class="readout-body">
+                <div class="readout-head">
+                  <div>
+                    <p class="eyebrow">Mirror Readout</p>
+                    <h2 id="readout-title">Signal forming</h2>
+                  </div>
+                  <div class="confidence" aria-label="Readout confidence">
+                    <span id="confidence-value">0</span>
+                    <small>confidence</small>
+                  </div>
+                </div>
+
+                <div class="verdict-zone">
+                  <div class="gauge" id="gauge" aria-label="Impulse risk score">
+                    <span id="risk-score">0</span>
+                    <small>risk</small>
+                  </div>
+                  <div class="verdict-copy">
+                    <p id="verdict-label">Run the mirror.</p>
+                    <p id="verdict-detail">The readout updates as the dossier changes.</p>
+                  </div>
+                </div>
+
+                <div id="metric-list" class="metric-list" aria-label="Signal scores"></div>
+
+                <div class="decision-strip">
+                  <div>
+                    <p class="eyebrow">Next move</p>
+                    <h3 id="next-move-title">Calibrate</h3>
+                    <p id="next-move-copy">Name the cleanest use case before buying.</p>
+                  </div>
+                  <button class="icon-button light" type="button" id="copy-button" aria-label="Copy readout">
+                    <span class="glyph glyph-copy" aria-hidden="true"></span>
+                  </button>
+                </div>
+
+                <div class="guardrail-block">
+                  <div class="block-title">
+                    <p class="eyebrow">Guardrails</p>
+                    <strong id="guardrail-summary">No hard stops</strong>
+                  </div>
+                  <div id="guardrail-list" class="guardrail-list"></div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section id="view-library" class="route-view" data-route="library" hidden>
+          <div class="route-heading">
+            <div>
+              <p class="eyebrow">Decision Library</p>
+              <h1>Objects under review</h1>
+            </div>
+            <div class="toolbar">
+              <label class="search-field" for="library-search">
+                <span class="glyph glyph-search" aria-hidden="true"></span>
+                <input id="library-search" type="search" placeholder="Search records">
+              </label>
+              <select id="library-filter" aria-label="Filter records">
+                <option value="all">All statuses</option>
+                <option value="watching">Watching</option>
+                <option value="cooling">Cooling</option>
+                <option value="passed">Passed</option>
+                <option value="bought">Bought</option>
+                <option value="high">High risk</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="library-stats" class="stat-grid"></div>
+          <div id="record-list" class="record-list"></div>
+        </section>
+
+        <section id="view-patterns" class="route-view" data-route="patterns" hidden>
+          <div class="route-heading">
+            <div>
+              <p class="eyebrow">Pattern Studio</p>
+              <h1>What keeps asking to buy?</h1>
+            </div>
+            <div class="live-summary">
+              <span id="pattern-count">0 records</span>
+              <span id="pattern-dominant">No pattern yet</span>
+            </div>
+          </div>
+
+          <div id="pattern-stats" class="stat-grid"></div>
+          <div class="pattern-grid">
+            <section class="analysis-surface" aria-labelledby="trigger-title">
+              <p class="eyebrow">Trigger Load</p>
+              <h2 id="trigger-title">Context pressure</h2>
+              <div id="trigger-chart" class="bar-chart"></div>
+            </section>
+            <section class="analysis-surface" aria-labelledby="signal-title">
+              <p class="eyebrow">Signal Balance</p>
+              <h2 id="signal-title">Average readout</h2>
+              <div id="signal-chart" class="bar-chart"></div>
+            </section>
+            <section class="analysis-surface pattern-brief" aria-labelledby="brief-title">
+              <p class="eyebrow">Brief</p>
+              <h2 id="brief-title">Pattern brief</h2>
+              <div id="pattern-brief"></div>
+            </section>
+          </div>
+        </section>
+
+        <section id="view-protocols" class="route-view" data-route="protocols" hidden>
+          <div class="route-heading">
+            <div>
+              <p class="eyebrow">Protocols</p>
+              <h1>Rules for the heated moment</h1>
+            </div>
+            <div class="toolbar">
+              <button class="ghost-action" type="button" id="export-button">
+                <span class="glyph glyph-save" aria-hidden="true"></span>
+                Export
+              </button>
+              <button class="ghost-action" type="button" id="import-button">
+                <span class="glyph glyph-copy" aria-hidden="true"></span>
+                Import
+              </button>
+              <input id="import-file" type="file" accept="application/json" hidden>
+            </div>
+          </div>
+
+          <div class="protocol-grid">
+            <form id="settings-form" class="settings-panel" autocomplete="off">
+              <div class="field-grid">
+                <label class="field">
+                  <span>Monthly discretionary limit</span>
+                  <input name="monthlyLimit" type="number" min="0" step="10">
+                </label>
+                <label class="field">
+                  <span>Default cooldown hours</span>
+                  <input name="coolingHours" type="number" min="1" step="1">
+                </label>
+                <label class="field">
+                  <span>Maximum buy risk</span>
+                  <input name="maxBuyRisk" type="number" min="1" max="100" step="1">
+                </label>
+                <label class="field">
+                  <span>High-price review above</span>
+                  <input name="reviewPrice" type="number" min="0" step="10">
+                </label>
+                <label class="field span-2">
+                  <span>Values to preserve</span>
+                  <textarea name="values" rows="3"></textarea>
+                </label>
+              </div>
+
+              <fieldset class="toggle-field">
+                <legend>Active rules</legend>
+                <label><input type="checkbox" name="noFeedBuy"><span>No direct social-feed purchases</span></label>
+                <label><input type="checkbox" name="requireAlternative"><span>Require a clean alternative</span></label>
+                <label><input type="checkbox" name="oneInOneOut"><span>One in, one out for repeat categories</span></label>
+                <label><input type="checkbox" name="coolHighRisk"><span>Auto-cool high-risk decisions</span></label>
+              </fieldset>
+
+              <div class="action-row">
+                <button class="primary-action" type="submit">
+                  <span class="glyph glyph-save" aria-hidden="true"></span>
+                  Save protocols
+                </button>
+              </div>
+            </form>
+
+            <aside class="rules-panel" aria-labelledby="rules-title">
+              <p class="eyebrow">Active Contract</p>
+              <h2 id="rules-title">Decision contract</h2>
+              <div id="rules-preview" class="rules-preview"></div>
+            </aside>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="app.js" defer></script>
+  </body>
+</html>
